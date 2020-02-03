@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<title>CAF</title>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  	<script src="../script/gcsocket.js"></script>
+  	<script src="../script/logwindow.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+<body class="logview">
+<script>
+	$(document).ready(function(){
+		openLog();
+	});
+</script>
+<div class="form-inline fixed-top lognav"style="top:0;">
+	<div class="form-check-inline">
+		<label class="form-check-label">
+    		<input type="checkbox" class="form-check-input" id="rxtoggle" value="r" checked onchange="changeRx(this.checked)">Received
+  		</label>
+	</div>
+	<div class="form-check-inline">
+  		<label class="form-check-label">
+    		<input type="checkbox" class="form-check-input" id="txtoggle" value="t" checked onchange="changeTx(this.checked)">Transmitted
+  		</label>
+	</div>
+	<div class="form-check-inline">
+		<label class="form-check-label">
+    		<input type="checkbox" class="form-check-input" value="r" checked>Interpret
+  		</label>
+	</div>
+	<button type="button" class="btn btn-warning" onclick="document.getElementById('logview').innerHTML='';">Clear</button>
+</div>
+
+<div id="logview" class="container-fluid border logview mh-100 text-monospace text-nowrap small">
+<!-- The gcSocket listener will add elements like
+	<p class="rx">&gt; :S0100N2588D3;</p> 
+	here as messages are received -->
+</div>
+
+<div class="fixed-bottom statusbar">
+  <ul class="list-group list-group-horizontal">
+  	<li class="list-group-item status">Websocket comms:<span class="status" id="socketstate">Unconnected</span></li>
+  </ul>
+</div>
+</body>
+</html>
