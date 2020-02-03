@@ -1,0 +1,101 @@
+/*
+ * Menu
+ */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+	top:0;
+	left:100%;
+	margin-top: -1px;
+}
+
+.dropdown-submenu a::after {
+  transform: rotate(-90deg);
+  position: absolute;
+  right: 6px;
+  top: .8em;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: .1rem;
+  margin-right: .1rem;
+}
+
+/*
+ * LOG Viewer
+ */
+.logview {
+	background-color: #ffffe0;
+	overflow-y: scroll;
+	margin: 2em 0px 2em 0px;
+	height: calc(100vh - 40px - 40px);
+
+}
+
+.logview p {
+  	margin:0px;
+  	padding: 0px;
+}
+
+.btn {
+	padding: 0px 2em;
+	margin:0px 1em;
+}
+
+/*
+ * Status
+ */
+.statusbar {
+	margin-bottom:0; 
+	background: #aaa;
+	position:fixed;
+	bottom:0;
+}
+.status {
+	background: #aaa;
+}
+
+h2 {
+	font-size:1.5em;
+	font-weight: bold;
+}
+
+/*
+ * Table
+ */
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+  background-color:#ffffff;
+}
+
+.nodes {
+	background-color:#c0c0c0;
+	overflow-x:auto;
+	overflow-y: scroll;
+	height: 30vh;
+}
+
+.events {
+	background-color:#c0c0c0;
+	overflow-x:auto;
+	overflow-y: scroll;
+	height: 30vh;
+}
+.nodeselected {
+	color: white;
+	background-color:#0078d7;
+}
+.eventselected {
+	color: white;
+	background-color:#0078d7;
+}
+
+
