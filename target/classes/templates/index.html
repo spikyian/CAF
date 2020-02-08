@@ -52,14 +52,16 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownFileMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">File</a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownFileMenuLink">
         	<!-- <li><a class="dropdown-item" href="#" onclick="uploadAll();">Upload data from layout</a></li> -->
-        	<li><a class="dropdown-item" href="#">Load data from file</a></li>
-        	<li><a class="dropdown-item" href="#">Save data to file</a></li>
+        	<li><a class="dropdown-item" href="#">Load data from file...</a></li>
+        	<li><a class="dropdown-item" href="#">Save data to file...</a></li>
         </ul>
       </li>
       <!-- EVENTS -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownEventsMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Events</a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownEventsMenuLink">
+        	<li><a class="dropdown-item" href="#" onclick="eventJoin()">Join event to node...</a></li>
+        	<li><a class="dropdown-item" href="#" onclick="evEdit()">Edit EVs...</a></li>
         	<li><a class="dropdown-item" href="#" onclick="popupEventSender()">Send Event...</a></li>
         	<li><a class="dropdown-item" href="#" onclick="popupEventDefiner()">Define Event...</a></li>
         	<li><a class="dropdown-item" href="#" onclick="deleteEvent()">Delete Event</a></li>
@@ -68,7 +70,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownNodesMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nodes</a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownNodesMenuLink">
-        	<li><a class="dropdown-item" href="#" onclick="nvEdit()">Edit NVs</a></li>
+        	<li><a class="dropdown-item" href="#" onclick="nvEdit()">Edit NVs...</a></li>
         	<li><a class="dropdown-item" href="#" onclick="doEnum()">CAN ID Enumeration</a></li>
         	<li><a class="dropdown-item" href="#" onclick="layoutLoaderOnCbusMessage({direction:'rx', message:':SB020NB60200A5200C;'})">Fake PNN</a></li>
         </ul>
@@ -79,7 +81,7 @@
         		data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Communications</a>
        	<ul class="dropdown-menu" aria-labelledby="navbarDropdownConnectMenuLink">
        		<li><a class="dropdown-item" href="#" onclick="getComms()">Refresh list</a></li>
-        	<li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#manualComms">Manual entry</a></li>
+        	<li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#manualComms">Manual entry...</a></li>
         	
         	
 
@@ -177,7 +179,8 @@
 	  				<th onclick="sortTable('nodelist',8, 'int')">Max Events</th>
 	  				<th onclick="sortTable('nodelist',9, 'str')">Version</th>
 	  				<th onclick="sortTable('nodelist',10, 'int')">No. NVs</th>
-	  				<th onclick="sortTable('nodelist',11, 'str')">Proc Id</th>
+	  				<th onclick="sortTable('nodelist',11, 'int')">EVs per event</th>
+	  				<th onclick="sortTable('nodelist',12, 'str')">Proc Id</th>
 	  				<th>Node Vars</th>
 	  			</tr>
 	  		</thead>
@@ -194,6 +197,7 @@
 	  				<td>{{m.maxevents}}</td>
 	  				<td class="v">{{m.major}}{{m.minor}}<span v-if="m.beta>0">BETA{{m.beta}}</span></td>
 	  				<td>{{m.numnvs}}</td>
+	  				<td>{{m.evsperevent}}</td>
 	  				<td>{{m.processor}}</td>
 	  				<td>??</td>
 	  			</tr>
@@ -201,7 +205,7 @@
 	  		</table>
 	  	</div>
 	</div>
-	<h2>Events for Selected Node</h2>
+	<h2>Events</h2>
 	<div class="row">
 		<div class="col events" >
 			<table border="1" id="eventlist">
@@ -230,6 +234,7 @@
         		<li>Create a deployable package</li>
         		<li>Convert commms menu and modal to a plugin</li>
         		<li>Manual connect</li>
+        		<li>Get the NV editor to work with Vue</li>
         		<li>Support data file driven NV editor</li>   
         		<li>Drag/drop or other method of associating event with module.</li>
         		<li>EV editor</li>
@@ -287,6 +292,35 @@
     </div>
   </div>
 </div>
+
+<div class="modal" id="evEditorModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Update EV Values</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+      	<div id="evEditor">
+        	NOT LOADED
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="evEditorLoad()">Reload</button>
+        <button type="button" class="btn btn-success" onclick="evEditorSave()">OK</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
 <div class="modal" id="eventDefinerModal">
   <div class="modal-dialog">

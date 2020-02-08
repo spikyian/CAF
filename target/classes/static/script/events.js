@@ -25,7 +25,7 @@ function capture_events_onCbusMessage(gcMessage) {
     		e.nn = hex2number(nnstr);
     		var enstr = gcMessage.message.substr(13,4);
 			e.en = hex2number(enstr);
-			if (isShort(opc)) nn = 0;
+			if (isShort(opc)) e.nn = 0;
 
 			e.name = "";
 			addEvent(e);

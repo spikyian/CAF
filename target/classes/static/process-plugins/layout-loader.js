@@ -56,9 +56,11 @@ function layout_loader_initialise(){
     module.nvs[4] = 104;
     module.nvs[5] = 105;
     module.maxevents = 6;
+    module.evsperevent = 20;
     module.numevents = 7;
     module.processor = 9;
     module.networkaddress = "10";
+    module.events = [];
     layout.modules.push(module);
     
     var module2={};
@@ -72,10 +74,12 @@ function layout_loader_initialise(){
     module2.numnvs = 0;
     module2.nvs = [];
     module2.maxevents = 0;
+    module2.evsperevent = 2;
     module2.numevents = 0;
     module2.numevents = 0;
     module2.processor = 9;
     module2.networkaddress = "11";
+    module2.events = [];
     layout.modules.push(module2);
     
     var event1 = {};
@@ -159,6 +163,8 @@ console.log("layout-loader CBUS direction="+gcMessage.direction);
     		module.type = type;
     		module.flags = flags;
     		module.networkaddress = canid;
+    		module.nvs = [];
+    		module.events = [];
     		console.log("saving module nn="+module.nn);
     		if (create) {
     			layout.modules.push(module);

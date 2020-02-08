@@ -43,14 +43,9 @@ public class PageController {
 	}
 	
 	/** module page requests we need to analyse the given parameters
-	  * and work out the best template or file to use.
-	  *
-	@RequestMapping(value = "/nvedit.js", params={"mu", "nn", "mt","v"}, method = RequestMethod.GET)
-	public String modulePage(HttpServletRequest request) {
-		System.out.println("NV EDITOR REQUEST with params URI="+request.getRequestURI());
-		System.out.println("NV EDITOR REQUEST query="+request.getQueryString());
-		return "/module/genericNvEditor.js";
-	}*/
+	 * and work out the best template or file to use.
+	 *
+	 */
 	
 	@RequestMapping(
 			value = "/nvedit.js", 
@@ -58,7 +53,7 @@ public class PageController {
 			method = RequestMethod.GET,
 			produces = "text/javascript"
 	)
-	public void getResouce(
+	public void getNvEditor(
 			HttpServletRequest request, 
 			HttpServletResponse response,
 			@RequestParam("mu") String mu,
@@ -68,8 +63,8 @@ public class PageController {
 			) {
 		System.out.println("NV EDITOR REQUEST with params URI="+request.getRequestURI()+" mu="+mu+" nn="+nn+" mt="+mt+" v="+v);
 		
-		/* We first of all try the fully qualified name <ModuleTypeName>_<major><minor>BETA<beta>.js */
-	    String myPath = "/module/"+mt+"_"+v+".js";
+		/* We first of all try the fully qualified name nV_<ModuleTypeName>_<major><minor>BETA<beta>.js */
+		String myPath = "/module/nV_"+mt+"_"+v+".js";
 	    Resource resouce = new ClassPathResource(myPath);
 	    InputStream is;
 	    try {
@@ -77,23 +72,26 @@ public class PageController {
 	    		is = resouce.getInputStream();
 	    	} catch (FileNotFoundException e1) {
 	    		System.out.println("File not found:"+myPath);
-	    		/* Now try <ModuleTypeName>_<major><minor>.js */
+	    		/* Now try nV_<ModuleTypeName>_<major><minor>.js */
 	    		int i=0;
+	    		while (!Character.isDigit(v.charAt(i))) {
+	    			i++;
+	    		}
 	    		while (Character.isDigit(v.charAt(i))) {
 	    			i++;
 	    		}
 	    		// i should be at the first non digit
 	    		String vv = v.substring(0,i+1);
-	    		myPath = "/module/"+mt+"_"+vv+".js"; // 
+	    		myPath = "/module/nV_"+mt+"_"+vv+".js"; // 
 	    		resouce = new ClassPathResource(myPath);
 	    	
 	    		try {
 	    			is = resouce.getInputStream();
 	    		} catch (FileNotFoundException e2) {
 	    			System.out.println("File not found:"+myPath);
-	    			/* Now try <ModuleTypeName>_<major>.js */
+	    			/* Now try nV_<ModuleTypeName>_<major>.js */
 	    			vv = v.substring(0,i);
-	    			myPath = "/module/"+mt+"_"+vv+".js"; // 
+	    			myPath = "/module/nV_"+mt+"_"+vv+".js"; // 
 	    			resouce = new ClassPathResource(myPath);
 	    			try {
 	    				is = resouce.getInputStream();
@@ -101,7 +99,7 @@ public class PageController {
 	    				System.out.println("File not found:"+myPath);
 			    	
 	    				/* Now try <ModuleTypeName>.js */
-	    				myPath = "/module/"+mt+".js"; // 
+	    				myPath = "/module/nV_"+mt+".js"; // 
 	    				resouce = new ClassPathResource(myPath);
 	    				try {
 	    					is = resouce.getInputStream();
@@ -115,7 +113,100 @@ public class PageController {
 	    						is = resouce.getInputStream();
 	    					} catch (FileNotFoundException ex) {
 	    						System.out.println("ERROR File not found:"+myPath);
-	    						throw new RuntimeException("IOError reading file", e4);
+	    						throw new RuntimeException("IOError reading file", ex);
+	    					}
+	    				}
+	    			}
+	    		}
+	    	}
+	    } catch (IOException e) {
+	    	System.out.println("Error reading input file:"+myPath);
+	    	throw new RuntimeException("IOError reading file", e);
+	    }
+	    System.out.println("Using "+myPath);
+	    response.setContentType("text/javascript");
+	    try {
+	    	System.out.println("Returning JavaScript");
+	        IOUtils.copy(is, response.getOutputStream());
+	        response.flushBuffer();
+	    } catch (IOException ex) {
+	        // log error
+	        throw new RuntimeException("IOError writing file to output stream", ex);
+	    }
+	}
+	
+	/** module page requests we need to analyse the given parameters
+	 * and work out the best template or file to use.
+	 *
+	 */
+	
+	@RequestMapping(
+			value = "/evedit.js", 
+			params={"mu", "nn", "mt","v"}, 
+			method = RequestMethod.GET,
+			produces = "text/javascript"
+	)
+	public void getEvEditor(
+			HttpServletRequest request, 
+			HttpServletResponse response,
+			@RequestParam("mu") String mu,
+			@RequestParam("nn") int nn,
+			@RequestParam("mt") String mt,
+			@RequestParam("v") String v
+			) {
+		System.out.println("EV EDITOR REQUEST with params URI="+request.getRequestURI()+" mu="+mu+" nn="+nn+" mt="+mt+" v="+v);
+		
+		/* We first of all try the fully qualified name eV_<ModuleTypeName>_<major><minor>BETA<beta>.js */
+	    String myPath = "/module/eV_"+mt+"_"+v+".js";
+	    Resource resouce = new ClassPathResource(myPath);
+	    InputStream is;
+	    try {
+	    	try {
+	    		is = resouce.getInputStream();
+	    	} catch (FileNotFoundException e1) {
+	    		System.out.println("File not found:"+myPath);
+	    		/* Now try eV_<ModuleTypeName>_<major><minor>.js */
+	    		int i=0;
+	    		while (!Character.isDigit(v.charAt(i))) {
+	    			i++;
+	    		}
+	    		while (Character.isDigit(v.charAt(i))) {
+	    			i++;
+	    		}
+	    		// i should be at the first non digit
+	    		String vv = v.substring(0,i+1);
+	    		myPath = "/module/eV_"+mt+"_"+vv+".js"; // 
+	    		resouce = new ClassPathResource(myPath);
+	    	
+	    		try {
+	    			is = resouce.getInputStream();
+	    		} catch (FileNotFoundException e2) {
+	    			System.out.println("File not found:"+myPath);
+	    			/* Now try <ModuleTypeName>_<major>.js */
+	    			vv = v.substring(0,i);
+	    			myPath = "/module/eV_"+mt+"_"+vv+".js"; // 
+	    			resouce = new ClassPathResource(myPath);
+	    			try {
+	    				is = resouce.getInputStream();
+	    			} catch (FileNotFoundException e3) {
+	    				System.out.println("File not found:"+myPath);
+			    	
+	    				/* Now try <ModuleTypeName>.js */
+	    				myPath = "/module/eV_"+mt+".js"; // 
+	    				resouce = new ClassPathResource(myPath);
+	    				try {
+	    					is = resouce.getInputStream();
+	    				} catch (FileNotFoundException e4) {
+	    					System.out.println("File not found:"+myPath);
+				    	
+	    					/* Now try generic.js */
+	    					myPath = "/module/genericEvEditor.js"; 
+	    					resouce = new ClassPathResource(myPath);
+	    					try {
+	    						is = resouce.getInputStream();
+	    					} catch (FileNotFoundException ex) {
+	    						System.out.println("ERROR File not found:"+myPath);
+	    						throw new RuntimeException("IOError reading file", ex);
 	    					}
 	    				}
 	    			}

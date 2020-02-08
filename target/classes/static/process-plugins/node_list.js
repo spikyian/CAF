@@ -30,10 +30,10 @@ function doEnum(e) {
 }
 
 /**
- * Open an NV editor window based uopn the type and version of the module.
+ * Open an NV editor window based upon the type and version of the module.
  */
 function nvEdit(e) {
-	console.log('Edit Nvs');
+	console.log('Edit NVs');
 	var mu = $(".nodeselected.mu").text().trim();
 	var nn = Number($(".nodeselected.nn").text());
 	var mt = $(".nodeselected.mt").text().trim();
@@ -108,19 +108,4 @@ function nvWriterTimed() {
 	window.setTimeout(nvWriterTimed, 200);	
 }
 
-/**
- * Function which loads javascript into the current context
- */
-jQuery.loadScript = function (url, callback) {
-	console.log('Calling AJAX '+url);
-    jQuery.ajax({url: url, dataType: 'script', success: callback, async: true});
-    console.log('Called AJAX');
-}
-
-
-
-function toggleModal() {
-	var modal = document.querySelector(".modal");
-	modal.classList.toggle("show-model");
-}
 

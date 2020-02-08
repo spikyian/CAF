@@ -42,3 +42,20 @@ function number2hex4(num) {
 	return ("000"+num.toString(16).toUpperCase()).slice(-4);
 }
 
+/**
+ * Function which loads javascript into the current context
+ */
+jQuery.loadScript = function (url, callback) {
+	console.log('Calling AJAX '+url);
+    jQuery.ajax({url: url, dataType: 'script', success: callback, async: true});
+    console.log('Called AJAX');
+}
+
+/**
+ * show or hide a modal.
+ */
+function toggleModal() {
+	var modal = document.querySelector(".modal");
+	modal.classList.toggle("show-modal");
+}
+
