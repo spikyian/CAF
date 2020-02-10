@@ -1,12 +1,31 @@
-function cbusModuleType(mt) {
-	switch (mt) {
-	case 32:
-		return "CANMIO";
-	default: 
-		return mt;
+var learnnn = 0;
+
+/**
+ * Put a module into learn mode and save the module.
+ * Only 1 module is allowed in learn mode at a time.
+ */
+function learn(nn) {
+	if (learnnn != 0) {
+		console.log("multiple modules in learn mode.");
+		alert("Error - multiple modules in learn mode.");
 	}
+	learnnn = nn;
+	var req = {direction:'tx', message:':S0FC0N53'+number2hex4(learnnn)+';'};
+	gcSend(req);
 }
 
+/**
+ * Take the module out of learn mode.
+ */
+function unlearn() {
+	var req = {direction:'tx', message:':S0FC0N54'+number2hex4(learnnn)+';'};
+	gcSend(req);
+	learnnn = 0;
+}
+
+/**
+ * convert the protocol number into string.
+ */
 function cbusProtocol(p) {
 	switch(p) {
     case 1:
@@ -18,6 +37,9 @@ function cbusProtocol(p) {
     }
 }
 
+/**
+ * convert the manufacturer type into a string.
+ */
 function cbusManufacturer(manu) {
 	switch(manu) {
     case 165:
@@ -31,23 +53,34 @@ function cbusManufacturer(manu) {
     }
 }
 
+/**
+ * Test to see if the opc is an event type.
+ */
 function isEvent(opc) {
 	if (opc < OPC_ACON) return false;
 	if ((opc & 150) != 144) return false;
 	return true;
 }
 
+/**
+ * Test to see if the event opc is a short event.
+ */
 function isShort(opc) {
 	if ((opc & 8) == 8) return true;
 	return false;
 }
 
+/**
+ * Test to see if the event is an ON event as opposed to an OFF event.
+ */
 function isOn(opc) {
 	if ((opc & 1) == 1) return false;
 	return true;
 }
 
-
+/**
+ * Convert an OPC number to a string.
+ */
 function cbusOpc(opc) {
 	switch(opc) {
 	
@@ -218,6 +251,9 @@ function cbusOpc(opc) {
 	}
 }
 
+/**
+ * convert the module type into a string name.
+ */
 function cbusModuleType (mt) {
 	switch (mt) {
 	

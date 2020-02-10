@@ -3,7 +3,7 @@
  * 
  */
 function openEvEditor() {
-	console.log("inside generic EV Editor openNvEditor()");
+	console.log("inside generic EV Editor openEvEditor()");
 
 	var mu = $(".nodeselected.mu").text().trim();
 	var nn = Number($(".nodeselected.nn").text());
@@ -54,7 +54,7 @@ function openEvEditor() {
 	div.html(html);
 
 	// start reading the EVs
-	evEditorRead(nn);
+	evEditorRead(nn, enn, en);
 }
 
 /**
@@ -66,6 +66,7 @@ function openEvEditor() {
  function evEditorSave() {
  	var nn = Number($(".nodeselected.nn").text());
  	console.log("nvEditorSave nn="+nn);
+ 	
  	var module = findModule(nn) ;
  	if (module == undefined) {
  		console.log("findModule returned undefined");
@@ -79,6 +80,7 @@ function openEvEditor() {
  	if (event == undefined) {
  		create = true;
  	}
+
  	var i;
  	console.log("nvEditorSave copying "+module.evsperevent+" values");
  	for (i=1; i<= module.evsperevent; i++) {

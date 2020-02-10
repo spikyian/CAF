@@ -250,6 +250,36 @@ console.log("request parameter#");
     			gcSend({direction:'tx', message:':S0FC0N71'+number2hex4(nn)+number2hex2(nvno+1)+';'});
     		}
 			break;
+		case "D3":	// Response to REQEV
+			// get the nn, nvno and value
+			var ennstr = gcMessage.message.substr(9,4);
+    		var enn = hex2number(ennstr);
+    		var enstr = gcMessage.message.substr(13,4);
+    		var en = hex2number(enstr);
+			var evno=hex2number(gcMessage.message.substr(17,2));
+    		var value=hex2number(gcMessage.message.substr(19,2));
+    		
+    		var module = findModule(learnnn);	// the module currently in learn mode
+    		if (module == null) return;
+    		
+    		console.log("findModule="+module);
+    		var event = findEvent(module, enn, en);
+    		if (event == null) {
+    			alert("Can't find module's event to save EV.");
+    			return;
+    		}
+    		
+    		// save it
+    		
+    		Vue.set(event.evs, evno, value);
+    		
+    		if (evno < module.evsperevent) {
+    			// request next
+    			gcSend({direction:'tx', message:':S0FC0NB2'+number2hex4(enn)+number2hex4(en)+number2hex2(evno+1)+';'});
+    		} else {
+    			unlearn();
+    		}
+			break;
     	}
     	
     }

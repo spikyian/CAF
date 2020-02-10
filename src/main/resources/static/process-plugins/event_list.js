@@ -108,10 +108,12 @@ function evEdit() {
 
 /**
  * Read the module EVs and store them in the module data structure.
+ * enn/en are the event identification
  */
-function evEditorRead(nn) {
+function evEditorRead(nn, enn, en) {
 	// start reading the EVs
-	var req = {direction:'tx', message:':S0FC0N71'+number2hex4(nn)+'01;'};
+	learn(nn);
+	var req = {direction:'tx', message:':S0FC0NB2'+number2hex4(enn)+number2hex4(en)+'01;'};
 	console.log("req="+req+" req.direction="+req.direction);
 	gcSend(req);
 }
@@ -121,17 +123,21 @@ function evEditorRead(nn) {
  * We do this using a timer and just send the EVSET at regular intervals.
  * I.e. we don't rely upon the WRACK.
  */
-function evEditorWrite(nn) {
+function evEditorWrite(nn, enn, en) {
 	console.log("Writing all EVs");
 	var module = findModule(nn);
 	if (module == undefined) return;
-	if (module.numevs == 0) return;
+	if (module.evsperevent == 0) return;
 	
+	var event = findEvent(module, enn, en);
+	
+	learn(nn);
 	// start writing the first vv
 	// This uses globals which means only one set of NVs can be written at any time.
-	evWriterNn = nn;
+	evWriterNn = enn;
+	evWriterEn = en;
 	evWriterEvIndex = 1;
-	var req = {direction:'tx', message:':S0FC0N96'+number2hex4(nn)+'01'+number2hex2(module.nvs[1])+';'};
+	var req = {direction:'tx', message:':S0FC0ND2'+number2hex4(enn)+number2hex4(en)+'01'+number2hex2(event.evs[1])+';'};
 	console.log("EVwriter req="+req+" req.direction="+req.direction);
 	gcSend(req);
 	
@@ -142,11 +148,15 @@ function evWriterTimed() {
 	var module = findModule(evWriterNn);
 	if (module == undefined) return;
 	if (module.numnvs == 0) return;
+	var event = findEvent(module, evWriterNn, evWriterEn);
 	evWriterEvIndex++;
-	if (evWriterEvIndex > module.numevs) return;	// finished
-	var req = {direction:'tx', message:':S0FC0N96'+number2hex4(evWriterNn)+
-				number2hex2(evWriterEvIndex)+number2hex2(module.nvs[evWriterEvIndex])+';'};
-	console.log("NvWriter req="+req+" req.direction="+req.direction);
+	if (evWriterEvIndex > module.evsperevent) {
+		unlearn();
+		return;	// finished
+	}
+	var req = {direction:'tx', message:':S0FC0ND2'+number2hex4(evWriterNn)+number2hex4(evWriterEn)+
+				number2hex2(evWriterEvIndex)+number2hex2(event.evs[evWriterEvIndex])+';'};
+	console.log("EvWriter req="+req+" req.direction="+req.direction);
 	gcSend(req);
 	window.setTimeout(evWriterTimed, 200);	
 }
