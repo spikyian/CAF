@@ -3,6 +3,8 @@ var openNvEditor;
 var nvWriterNn;
 var nvWriterNvIndex;
 
+var xml;
+
 /**
  * Functions associated with the Nodes menu items and the node list.
  *
@@ -42,25 +44,41 @@ function nvEdit(e) {
 	// get the correct JS from the webserver based upon manufacturer, type, version
 	var url = '/nvedit.js?mu='+mu+'&nn='+nn+'&mt='+mt+'&v='+v;
 	console.log('About to get JS from '+url);
-	$.when(
-		$.getScript(url),
-		$.Deferred(function(deferred) {
-			$( deferred.resolve);
-		})
-	).done(function() {
 	
-//	$.loadScript(url, function(){
-		console.log('Got script');
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+  		if (this.readyState == 4 && this.status == 200) {
+    		console.log("content type="+this.getResponseHeader("content-type"));
+    		console.log("response text="+this.responseText);
+    		if (this.getResponseHeader("content-type") == "text/javascript") {
+				console.log("Handle JS");
+				eval(this.responseText);
+				// populate the modal popup
+				openNvEditor();
 		
-		// populate the modal popup
-		openNvEditor();
-		
-		// Show the modal
-		$('#nvEditorModal').modal('show')
-		
-	}).fail(function() {
-		console.log('Failed to load NV Editor');
-	});
+				// Show the modal
+				$('#nvEditorModal').modal('show');
+			} else if (this.getResponseHeader("content-type") == "text/xml") {
+				console.log("Handle XML");
+				// handle a module xml template
+				
+				// If we get an xml response then we should load the xmlTemplateNvEditor.
+				xml = this.responseXML;
+				console.log("responsexml="+xml);
+				console.log("Getting the template editor");
+				$.getScript("/script/xmlTemplateNvEditor.js", function() {
+					console.log("doing the template editor");
+					openNvEditor();
+					// Show the modal
+					$('#nvEditorModal').modal('show');
+				});
+			} else {
+				console.log('Unknown content-type:'+jqxhr.getResponseHeader("content-type"));
+			}
+  		}
+	};
+	xhttp.open("GET", url, true);
+	xhttp.send();
 }
 
 /**

@@ -2,8 +2,40 @@
  * Add the functionality to load data from an existing layout.
  *
  * We add a menu item which when clicked will start the process.
+ *
+ * The data is stored in a global object called "layout"
+ * This contains a list of modules and a list of events.
+ *
+ * layout {
+ *	 modules[
+ *	   int nn;		// node number
+ *	   String manu;	// manufacturer
+ *	   String type;	// module type name
+ *	   int flags;	// parameter flags
+ *	   int major;	// major version number
+ *	   char minor;	// minor version characater
+ *	   int beta;	// beta version number
+ *	   int numnvs;	// number of NVs read from parameters
+ *	   int nvs[];	// the NV values
+ *	   int maxevents;	// the max number of events which can be stored as read from parameter 
+ *	   int evsperevent;	// the number of EVs in each event as read from parameter
+ *	   int numevents;	// the number of events currently stored as read from parameter
+ *	   int processor;	// the module processor type;
+ *	   int networkaddress;	// network layer protocol address i.e. canid
+ *	   events[
+ *		  int enn;
+ *		  int en;
+ *		  int evs[];
+ *	   ];
+ *
+ * 	 events[
+ *	 	String name;
+ *	 	int nn;
+ *	 	int en;
+ *	 ];
  */
- "use strict";
+ 
+"use strict";
 var layout={};	// a global
 var app;
 
@@ -44,7 +76,7 @@ function layout_loader_initialise(){
 	module.nn = 256;
     module.manu = "MERG";
     module.type = "CANMIO";
-    module.flags = 2;
+    module.flags = 7;
     module.major = "3";
     module.minor = "a";
     module.beta = "4";
@@ -67,7 +99,7 @@ function layout_loader_initialise(){
     module2.nn = 257;
     module2.manu = "ROCRAIL";
     module2.type = "CANDUMMY";
-    module2.flags = 2;
+    module2.flags = 4;
     module2.major = "2";
     module2.minor = "b";
     module2.beta = "1";

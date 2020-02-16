@@ -98,4 +98,23 @@ table, th, td {
 	background-color:#0078d7;
 }
 
+/*
+ * Editor
+ */
+.group {
+	border-style:ridge;
+	border-radius: 5px;
+}
+.groupheading {
+	margin-top: -10px;
+	margin-left: 5px;
+	background: white;
+}
 
+/*
+ * icons
+ */
+.smallicon {
+	width: 1em;
+	height: 1;
+}

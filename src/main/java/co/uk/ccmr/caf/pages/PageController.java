@@ -81,6 +81,10 @@ public class PageController {
 	    			i++;
 	    		}
 	    		// i should be at the first non digit
+	    		
+	    		/*
+	    		 * Phase 1 - try to find a JS file for the module
+	    		 */
 	    		String vv = v.substring(0,i+1);
 	    		myPath = "/module/nV_"+mt+"_"+vv+".js"; // 
 	    		resouce = new ClassPathResource(myPath);
@@ -105,16 +109,74 @@ public class PageController {
 	    					is = resouce.getInputStream();
 	    				} catch (FileNotFoundException e4) {
 	    					System.out.println("File not found:"+myPath);
+	    					
+	    					/*
+	    		    		 * Phase 2 - try to find a XML file for the module
+	    		    		 */
+	    					vv = v.substring(0,i+1);
+	    					myPath = "/module/"+mt+"_"+vv+".xml"; // 
+	    		    		resouce = new ClassPathResource(myPath);
+	    		    	
+	    		    		try {
+	    		    			is = resouce.getInputStream();
+	    		    		} catch (FileNotFoundException e5) {
+	    		    			System.out.println("File not found:"+myPath);
+	    		    			/* Now try nV_<ModuleTypeName>_<major>.xml */
+	    		    			vv = v.substring(0,i);
+	    		    			myPath = "/module/"+mt+"_"+vv+".xml"; // 
+	    		    			resouce = new ClassPathResource(myPath);
+	    		    			try {
+	    		    				is = resouce.getInputStream();
+	    		    			} catch (FileNotFoundException e6) {
+	    		    				System.out.println("File not found:"+myPath);
+	    				    	
+	    		    				/* Now try <ModuleTypeName>.xml */
+	    		    				myPath = "/module/"+mt+".xml"; // 
+	    		    				resouce = new ClassPathResource(myPath);
+	    		    				try {
+	    		    					is = resouce.getInputStream();
+	    		    				} catch (FileNotFoundException e7) {
+	    		    					System.out.println("File not found:"+myPath);
 				    	
-	    					/* Now try generic.js */
-	    					myPath = "/module/genericNvEditor.js"; 
-	    					resouce = new ClassPathResource(myPath);
-	    					try {
-	    						is = resouce.getInputStream();
-	    					} catch (FileNotFoundException ex) {
-	    						System.out.println("ERROR File not found:"+myPath);
-	    						throw new RuntimeException("IOError reading file", ex);
-	    					}
+	    		    					/*
+	    		    					 * Phase 3 - return with the generic editor
+	    		    					 */
+	    		    					/* Now try generic.js */
+	    		    					myPath = "/module/genericNvEditor.js"; 
+	    		    					resouce = new ClassPathResource(myPath);
+	    		    					try {
+	    		    						is = resouce.getInputStream();
+	    		    					} catch (FileNotFoundException ex) {
+	    		    						System.out.println("ERROR File not found:"+myPath);
+	    		    						throw new RuntimeException("IOError reading file", ex);
+	    		    					}
+	    		    					System.out.println("Using "+myPath);
+	    		    				    response.setContentType("text/javascript");
+	    		    				    try {
+	    		    				    	System.out.println("Returning Generic JavaScript");
+	    		    				        IOUtils.copy(is, response.getOutputStream());
+	    		    				        response.flushBuffer();
+	    		    				    } catch (IOException ex) {
+	    		    				        // log error
+	    		    				        throw new RuntimeException("IOError writing file to output stream", ex);
+	    		    				    }
+	    		    				    return;
+	    		    				}
+	    		    			}
+	    		    		}
+	    		    		// We found an xml file
+	    		    		System.out.println("Using "+myPath);
+	    		    	    response.setContentType("text/xml");
+	    		    	    try {
+	    		    	    	System.out.println("Returning XML");
+	    		    	        IOUtils.copy(is, response.getOutputStream());
+	    		    	        response.flushBuffer();
+	    		    	    } catch (IOException ex) {
+	    		    	        // log error
+	    		    	        throw new RuntimeException("IOError writing file to output stream", ex);
+	    		    	    }
+	    		    		return;
+	    		    		
 	    				}
 	    			}
 	    		}

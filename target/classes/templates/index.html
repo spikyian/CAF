@@ -116,8 +116,14 @@
         </ul>
       </li> 
       <!-- HELP -->
-      <li class="nav-item">
-        <a class="nav-link" href="#">Help</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Help</a>
+        <ul class="dropdown-menu">
+        	<li><a class="dropdown-item" href="#" onclick="window.open('/page/userguide.html', 'User Guide', 'location=0,height=500,width=450');">User guide</a></li>
+        	<li><a class="dropdown-item" href="#" onclick="window.open('/page/moduleguide.html', 'Module Guide', 'location=0,height=500,width=450');">Module guide</a></li>
+        	<li><a class="dropdown-item" href="#" onclick="window.open('/page/developerguide.html', 'Developer Guide', 'location=0,height=500,width=450');">Developer guide</a></li>
+        	<li><a class="dropdown-item" href="#" onclick="alert('Development version\nIan Hogg 2020');">About</a></li>
+        </ul>
       </li>    
     </ul>
   </div>  
@@ -193,7 +199,10 @@
 	  				<td class="nn">{{m.nn}}</td>
 	  				<td>{{m.networkaddress}}</td>
 	  				<td>{{m.numevents}}</td>
-	  				<td>{{m.flags}}</td>
+	  				<td>
+	  					<span v-if="m.flags&4"><img alt="Y" src="/image/tick.png" class="smallicon"></span>
+	  					<span v-else="m.flags&4"><img alt="N" src="/image/cross.png" class="smallicon"></span>
+	  				</td>
 	  				<td>{{m.maxevents}}</td>
 	  				<td class="v">{{m.major}}{{m.minor}}<span v-if="m.beta>0">BETA{{m.beta}}</span></td>
 	  				<td>{{m.numnvs}}</td>
@@ -230,26 +239,28 @@
       		<p>To do</p>
 
 			<ul>
-        		<li>Upload to github</li>
         		<li>Create a deployable package</li>
         		<li>Convert commms menu and modal to a plugin</li>
         		<li>Manual connect</li>
         		<li>Get the NV editor to work with Vue</li>
-        		<li>Support data file driven NV editor</li>   
+        		<li>NV editor - template based</li>  
+        		<li>NV editor - JS based</li>  
         		<li>Drag/drop or other method of associating event with module.</li>
-        		<li>EV editor</li>
+        		<li>EV editor - template based</li>
+        		<li>EV editor - JS based</li>
         		<li>save/load layout data back to server and store in FCU format</li>
         		<li>Tidy up plugins</li>
-        		<li>Upload to have state so it doesn't get initiated by other comms</li>
+        		<li>Layout upload to have state so it doesn't get retriggered by other comms</li>
         		<li>Interpret log messages</li>
         		<li>event list colours?</li>
         		<li>Module param display</li>
         		<li>Firmware download</li>
         		<li>Help/About and balloon assist</li>
         		<li>Document how to implement a module</li>
+        		<li>Document user guide</li>
         		<li>keyboard accelerators and tabbing between fields</li>
         		<li>Right click quick access</li>
-        		<li>Remove cbus listener</li>
+        		<li>Call Remove cbus listener where necessary</li>
         		<li>Device names</li>
         		<li>Debug mode</li>
         		<li>Add date/time to log entries</li>
