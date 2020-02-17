@@ -80,6 +80,7 @@ function openNvEditor() {
 						var nvno = findChildNode(bite, "id").innerHTML;
 						console.log("nvno="+nvno);
 						var bits;
+
 						for (bits of bite.childNodes) {
 							if (bits.nodeName == "bits") {
 								var name = findChildNode(bits, "name").innerHTML;
@@ -87,19 +88,32 @@ function openNvEditor() {
 								var bitmask = findChildNode(bits, "bitmask").innerHTML;
 								var uitype = findChildNode(findChildNode(bits, "type"), "ui").innerHTML;
 						
-								html += "<div data-toggle='tooltip' title='"+description+"'><label>"+name+":</label>";
-						
 								switch(uitype) {
 								case "text":
+									html += "<div data-toggle='tooltip' title='"+description+"'><label>"+name+"</label>";
 									html += "<input type='text' class='form-control' id='nv1'>";
 									break;
 								case "checkbox":
+									html += "<div class='form-check-inline' data-toggle='tooltip' title='"+description+"'><label>";
+									html += "<input type='checkbox'  class='form-check-input' id='nv1'>";
+									html += name+"</label>"
+									break;
 								case "choice":
+									html += "<div data-toggle='tooltip' title='"+description+"'><label>"+name+"</label>";
+									html += "<select class='form-control' id='nv1'>";
+									var choice = findChildNode(findChildNode(bits, "type"), "choice")
+									var item;
+									for (item of choice.childNodes) {
+										var setting = findChildNode(item, "setting");
+										var value = findChildNode(item, "value");
+										if ((setting != null) && (value != null)) {
+											html += "<option value='"+value.innerHTML+"'>"+setting.innerHTML+"</option>";
+										}
+									}
+									html += "</select>";
+									break;
 								case "slider":
-								}
-					
-						
-						
+								}			
 								html += "</div>";
 							}
 						}
