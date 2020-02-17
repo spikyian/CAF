@@ -118,3 +118,15 @@ table, th, td {
 	width: 1em;
 	height: 1;
 }
+
+/*
+ * Scrollable tabs
+ */
+.nav-tabs {
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+}
+.nav-tabs>li {
+  float: none;
+}
