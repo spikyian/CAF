@@ -1,0 +1,937 @@
+<moduletype>
+	<!--CANACE8C -->
+	<nvtabs>
+		<nvtab>
+			<name>General</name>
+			<groups>
+				<group>
+					<name>Input 1</name>
+					<bytes>
+						<byte>
+							<id>1</id>
+							<bits>
+								<bitmask>1</bitmask>
+								<name>ON only</name>
+								<description>No OFF events are produced</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>enable</setting>
+											<value>1</value>
+										</item>
+										<item>
+											<setting>disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>2</id>
+							<bits>
+								<bitmask>1</bitmask>
+								<name>Input inverted</name>
+								<description>Active High input</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Inverted</setting>
+											<value>1</value>
+										</item>
+										<item>
+											<setting>Not inverted</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>3</id>
+							<bits>
+								<bitmask>1</bitmask>
+								<name>Input delay</name>
+								<description>Input delay enabled</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Enable</setting>
+											<value>1</value>
+										</item>
+										<item>
+											<setting>Disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>6</id>
+							<bits>
+								<bitmask>1</bitmask>
+								<name>Toggle mode</name>
+								<description>For use with push button switches</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>On</setting>
+											<value>1</value>
+										</item>
+										<item>
+											<setting>Off</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>8</id>
+							<bits>
+								<bitmask>1</bitmask>
+								<name>Disable SOD</name>
+								<description>Don't generate a SOD response</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>SOD enabled</setting>
+											<value>1</value>
+										</item>
+										<item>
+											<setting>SOD disabled</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+					</bytes>
+				</group>
+					
+				<group>
+					<name>Input 2</name>
+					<bytes>
+						<byte>
+							<id>1</id>
+							<bits>
+								<bitmask>2</bitmask>
+								<name>ON only</name>
+								<description>No OFF events are produced</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>enable</setting>
+											<value>1</value>
+										</item>
+										<item>
+											<setting>disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>2</id>
+							<bits>
+								<bitmask>2</bitmask>
+								<name>Input inverted</name>
+								<description>Active High input</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Inverted</setting>
+											<value>1</value>
+										</item>
+										<item>
+											<setting>Not inverted</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>3</id>
+							<bits>
+								<bitmask>2</bitmask>
+								<name>Input delay</name>
+								<description>Input delay enabled</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Enable</setting>
+											<value>1</value>
+										</item>
+										<item>
+											<setting>Disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>6</id>
+							<bits>
+								<bitmask>2</bitmask>
+								<name>Toggle mode</name>
+								<description>For use with push button switches</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>On</setting>
+											<value>1</value>
+										</item>
+										<item>
+											<setting>Off</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>8</id>
+							<bits>
+								<bitmask>2</bitmask>
+								<name>Disable SOD</name>
+								<description>Don't generate a SOD response</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>SOD enabled</setting>
+											<value>1</value>
+										</item>
+										<item>
+											<setting>SOD disabled</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+					</bytes>
+				</group>
+					
+				<group>
+					<name>Input 3</name>
+					<bytes>
+						<byte>
+							<id>1</id>
+							<bits>
+								<bitmask>4</bitmask>
+								<name>ON only</name>
+								<description>No OFF events are produced</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>enable</setting>
+											<value>4</value>
+										</item>
+										<item>
+											<setting>disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>2</id>
+							<bits>
+								<bitmask>4</bitmask>
+								<name>Input inverted</name>
+								<description>Active High input</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Inverted</setting>
+											<value>4</value>
+										</item>
+										<item>
+											<setting>Not inverted</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>3</id>
+							<bits>
+								<bitmask>4</bitmask>
+								<name>Input delay</name>
+								<description>Input delay enabled</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Enable</setting>
+											<value>4</value>
+										</item>
+										<item>
+											<setting>Disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>6</id>
+							<bits>
+								<bitmask>4</bitmask>
+								<name>Toggle mode</name>
+								<description>For use with push button switches</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>On</setting>
+											<value>4</value>
+										</item>
+										<item>
+											<setting>Off</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>8</id>
+							<bits>
+								<bitmask>4</bitmask>
+								<name>Disable SOD</name>
+								<description>Don't generate a SOD response</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>SOD enabled</setting>
+											<value>4</value>
+										</item>
+										<item>
+											<setting>SOD disabled</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+					</bytes>
+				</group>
+					
+				<group>
+					<name>Input 4</name>
+					<bytes>
+						<byte>
+							<id>1</id>
+							<bits>
+								<bitmask>8</bitmask>
+								<name>ON only</name>
+								<description>No OFF events are produced</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>enable</setting>
+											<value>8</value>
+										</item>
+										<item>
+											<setting>disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>2</id>
+							<bits>
+								<bitmask>8</bitmask>
+								<name>Input inverted</name>
+								<description>Active High input</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Inverted</setting>
+											<value>8</value>
+										</item>
+										<item>
+											<setting>Not inverted</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>3</id>
+							<bits>
+								<bitmask>8</bitmask>
+								<name>Input delay</name>
+								<description>Input delay enabled</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Enable</setting>
+											<value>8</value>
+										</item>
+										<item>
+											<setting>Disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>6</id>
+							<bits>
+								<bitmask>8</bitmask>
+								<name>Toggle mode</name>
+								<description>For use with push button switches</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>On</setting>
+											<value>8</value>
+										</item>
+										<item>
+											<setting>Off</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>8</id>
+							<bits>
+								<bitmask>8</bitmask>
+								<name>Disable SOD</name>
+								<description>Don't generate a SOD response</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>SOD enabled</setting>
+											<value>8</value>
+										</item>
+										<item>
+											<setting>SOD disabled</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+					</bytes>
+				</group>
+					
+				<group>
+					<name>Input 5</name>
+					<bytes>
+						<byte>
+							<id>1</id>
+							<bits>
+								<bitmask>16</bitmask>
+								<name>ON only</name>
+								<description>No OFF events are produced</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>enable</setting>
+											<value>16</value>
+										</item>
+										<item>
+											<setting>disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>2</id>
+							<bits>
+								<bitmask>16</bitmask>
+								<name>Input inverted</name>
+								<description>Active High input</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Inverted</setting>
+											<value>16</value>
+										</item>
+										<item>
+											<setting>Not inverted</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>3</id>
+							<bits>
+								<bitmask>16</bitmask>
+								<name>Input delay</name>
+								<description>Input delay enabled</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Enable</setting>
+											<value>16</value>
+										</item>
+										<item>
+											<setting>Disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>6</id>
+							<bits>
+								<bitmask>16</bitmask>
+								<name>Toggle mode</name>
+								<description>For use with push button switches</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>On</setting>
+											<value>16</value>
+										</item>
+										<item>
+											<setting>Off</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>8</id>
+							<bits>
+								<bitmask>16</bitmask>
+								<name>Disable SOD</name>
+								<description>Don't generate a SOD response</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>SOD enabled</setting>
+											<value>16</value>
+										</item>
+										<item>
+											<setting>SOD disabled</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+					</bytes>
+				</group>
+					
+				<group>
+					<name>Input 6</name>
+					<bytes>
+						<byte>
+							<id>1</id>
+							<bits>
+								<bitmask>32</bitmask>
+								<name>ON only</name>
+								<description>No OFF events are produced</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>enable</setting>
+											<value>32</value>
+										</item>
+										<item>
+											<setting>disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>2</id>
+							<bits>
+								<bitmask>32</bitmask>
+								<name>Input inverted</name>
+								<description>Active High input</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Inverted</setting>
+											<value>32</value>
+										</item>
+										<item>
+											<setting>Not inverted</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>3</id>
+							<bits>
+								<bitmask>32</bitmask>
+								<name>Input delay</name>
+								<description>Input delay enabled</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Enable</setting>
+											<value>32</value>
+										</item>
+										<item>
+											<setting>Disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>6</id>
+							<bits>
+								<bitmask>32</bitmask>
+								<name>Toggle mode</name>
+								<description>For use with push button switches</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>On</setting>
+											<value>32</value>
+										</item>
+										<item>
+											<setting>Off</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>8</id>
+							<bits>
+								<bitmask>32</bitmask>
+								<name>Disable SOD</name>
+								<description>Don't generate a SOD response</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>SOD enabled</setting>
+											<value>32</value>
+										</item>
+										<item>
+											<setting>SOD disabled</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+					</bytes>
+				</group>
+					
+				<group>
+					<name>Input 7</name>
+					<bytes>
+						<byte>
+							<id>1</id>
+							<bits>
+								<bitmask>64</bitmask>
+								<name>ON only</name>
+								<description>No OFF events are produced</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>enable</setting>
+											<value>64</value>
+										</item>
+										<item>
+											<setting>disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>2</id>
+							<bits>
+								<bitmask>64</bitmask>
+								<name>Input inverted</name>
+								<description>Active High input</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Inverted</setting>
+											<value>64</value>
+										</item>
+										<item>
+											<setting>Not inverted</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>3</id>
+							<bits>
+								<bitmask>64</bitmask>
+								<name>Input delay</name>
+								<description>Input delay enabled</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Enable</setting>
+											<value>64</value>
+										</item>
+										<item>
+											<setting>Disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>6</id>
+							<bits>
+								<bitmask>64</bitmask>
+								<name>Toggle mode</name>
+								<description>For use with push button switches</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>On</setting>
+											<value>64</value>
+										</item>
+										<item>
+											<setting>Off</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>8</id>
+							<bits>
+								<bitmask>64</bitmask>
+								<name>Disable SOD</name>
+								<description>Don't generate a SOD response</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>SOD enabled</setting>
+											<value>64</value>
+										</item>
+										<item>
+											<setting>SOD disabled</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+					</bytes>
+				</group>
+					
+				<group>
+					<name>Input 8</name>
+					<bytes>
+						<byte>
+							<id>1</id>
+							<bits>
+								<bitmask>128</bitmask>
+								<name>ON only</name>
+								<description>No OFF events are produced</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>enable</setting>
+											<value>128</value>
+										</item>
+										<item>
+											<setting>disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>2</id>
+							<bits>
+								<bitmask>128</bitmask>
+								<name>Input inverted</name>
+								<description>Active High input</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Inverted</setting>
+											<value>128</value>
+										</item>
+										<item>
+											<setting>Not inverted</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>3</id>
+							<bits>
+								<bitmask>128</bitmask>
+								<name>Input delay</name>
+								<description>Input delay enabled</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>Enable</setting>
+											<value>128</value>
+										</item>
+										<item>
+											<setting>Disable</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>6</id>
+							<bits>
+								<bitmask>128</bitmask>
+								<name>Toggle mode</name>
+								<description>For use with push button switches</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>On</setting>
+											<value>128</value>
+										</item>
+										<item>
+											<setting>Off</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>8</id>
+							<bits>
+								<bitmask>128</bitmask>
+								<name>Disable SOD</name>
+								<description>Don't generate a SOD response</description>
+								<type>
+									<ui>checkbox</ui>
+									<choice>
+										<item>
+											<setting>SOD enabled</setting>
+											<value>128</value>
+										</item>
+										<item>
+											<setting>SOD disabled</setting>
+											<value>0</value>
+										</item>
+									</choice>
+								</type>
+							</bits>
+						</byte>
+					</bytes>
+				</group>
+			</groups>
+		</nvtab>
+		<nvtab>
+			<name>Advanced</name>
+			<groups>
+				<group>
+					<name>Advanced</name>
+					<bytes>
+						<byte>
+							<id>4</id>
+							<bits>
+								<bitmask>255</bitmask>
+								<name>On delay time</name>
+								<description>Time in units of 10ms</description>
+								<type>
+									<ui>text</ui>
+									<integer>
+										<min>0</min>
+										<max>255</max>
+									</integer>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>5</id>
+							<bits>
+								<bitmask>255</bitmask>
+								<name>Off delay time</name>
+								<description>Time in units of 10ms</description>
+								<type>
+									<ui>text</ui>
+									<integer>
+										<min>0</min>
+										<max>255</max>
+									</integer>
+								</type>
+							</bits>
+						</byte>
+					</bytes>
+				</group>
+			</groups>
+		</nvtab>
+	</nvtabs>
+</moduletype>

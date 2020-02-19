@@ -11,10 +11,10 @@ function openNvEditor() {
 	var mt = Number($(".nodeselected.mt").text());
 	var v = $(".nodeselected.v").text().trim();
 	
-	console.log("Generic openNvEditor mu="+mu+" nn="+nn+" mt="+mt+" v="+v);
+	console.log("Template openNvEditor mu="+mu+" nn="+nn+" mt="+mt+" v="+v);
 	var module =findModule(nn);
 	
-	console.log("Generic openNvEditor module="+module+" module.nn="+module.nn+" module.numnvs="+module.numnvs);
+	console.log("Template openNvEditor module="+module+" module.nn="+module.nn+" module.numnvs="+module.numnvs);
 	var div = $("#nvEditor");
 	// Check there are NVs to edit
 	if (module.numnvs == 0) {
@@ -69,8 +69,8 @@ function openNvEditor() {
 			if (group.nodeName == "group") {
 				var groupname = findChildNode(group, "name").innerHTML;
 				console.log("groupname="+groupname);
-				if (groups.length > 1) {
-					html += "<div class='group' id='group1'><p class='groupheading'>"+groupname+"</p>";
+				if (groups.childNodes.length > 1) {
+					html += "<fieldset><legend>"+groupname+"</legend><br/>";
 				}
 				// go through the NV bytes
 				var bytes = findChildNode(group, "bytes").childNodes;
@@ -120,10 +120,10 @@ function openNvEditor() {
 					
 					}
 				}
-			}
 		
-			if (groups.length > 1) {
-				html += "</div>";
+				if (groups.childNodes.length > 1) {
+					html += "</fieldset>";
+				}
 			}
 		}
 		if (tablist.length > 1) {

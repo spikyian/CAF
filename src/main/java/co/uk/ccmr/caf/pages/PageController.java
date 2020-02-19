@@ -64,7 +64,7 @@ public class PageController {
 		System.out.println("NV EDITOR REQUEST with params URI="+request.getRequestURI()+" mu="+mu+" nn="+nn+" mt="+mt+" v="+v);
 		
 		/* We first of all try the fully qualified name nV_<ModuleTypeName>_<major><minor>BETA<beta>.js */
-		String myPath = "/module/nV_"+mt+"_"+v+".js";
+		String myPath = "/module/nV."+mt+"."+v+".js";
 	    Resource resouce = new ClassPathResource(myPath);
 	    InputStream is;
 	    try {
@@ -86,7 +86,7 @@ public class PageController {
 	    		 * Phase 1 - try to find a JS file for the module
 	    		 */
 	    		String vv = v.substring(0,i+1);
-	    		myPath = "/module/nV_"+mt+"_"+vv+".js"; // 
+	    		myPath = "/module/nV."+mt+"."+vv+".js"; // 
 	    		resouce = new ClassPathResource(myPath);
 	    	
 	    		try {
@@ -95,7 +95,7 @@ public class PageController {
 	    			System.out.println("File not found:"+myPath);
 	    			/* Now try nV_<ModuleTypeName>_<major>.js */
 	    			vv = v.substring(0,i);
-	    			myPath = "/module/nV_"+mt+"_"+vv+".js"; // 
+	    			myPath = "/module/nV."+mt+"."+vv+".js"; // 
 	    			resouce = new ClassPathResource(myPath);
 	    			try {
 	    				is = resouce.getInputStream();
@@ -103,7 +103,7 @@ public class PageController {
 	    				System.out.println("File not found:"+myPath);
 			    	
 	    				/* Now try <ModuleTypeName>.js */
-	    				myPath = "/module/nV_"+mt+".js"; // 
+	    				myPath = "/module/nV."+mt+".js"; // 
 	    				resouce = new ClassPathResource(myPath);
 	    				try {
 	    					is = resouce.getInputStream();
@@ -114,7 +114,7 @@ public class PageController {
 	    		    		 * Phase 2 - try to find a XML file for the module
 	    		    		 */
 	    					vv = v.substring(0,i+1);
-	    					myPath = "/module/"+mt+"_"+vv+".xml"; // 
+	    					myPath = "/module/"+mt+"."+vv+".xml"; // 
 	    		    		resouce = new ClassPathResource(myPath);
 	    		    	
 	    		    		try {
@@ -123,7 +123,7 @@ public class PageController {
 	    		    			System.out.println("File not found:"+myPath);
 	    		    			/* Now try nV_<ModuleTypeName>_<major>.xml */
 	    		    			vv = v.substring(0,i);
-	    		    			myPath = "/module/"+mt+"_"+vv+".xml"; // 
+	    		    			myPath = "/module/"+mt+"."+vv+".xml"; // 
 	    		    			resouce = new ClassPathResource(myPath);
 	    		    			try {
 	    		    				is = resouce.getInputStream();

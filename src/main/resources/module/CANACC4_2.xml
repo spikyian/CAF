@@ -1,0 +1,175 @@
+<moduletype>
+	<!-- CANACC4_2 -->
+	<nvtabs>
+		<nvtab>
+			<name>Global</name>
+			<groups>
+				<group>
+					<name>Pulse duration</name>
+					<bytes>	
+						<byte>
+							<id>1</id>
+							<bits>
+								<bitmask>255</bitmask>
+								<name>CH1 pulse duration</name>
+								<description>CH1 pulse duration</description>
+								<type>
+									<ui>text</ui>
+									<integer>
+										<min>0</min>
+										<max>255</max>
+									</integer>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>2</id>
+							<bits>
+								<bitmask>255</bitmask>
+								<name>CH2 pulse duration</name>
+								<description>CH2 pulse duration</description>
+								<type>
+									<ui>text</ui>
+									<integer>
+										<min>0</min>
+										<max>255</max>
+									</integer>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>3</id>
+							<bits>
+								<bitmask>255</bitmask>
+								<name>CH3 pulse duration</name>
+								<description>CH3 pulse duration</description>
+								<type>
+									<ui>text</ui>
+									<integer>
+										<min>0</min>
+										<max>255</max>
+									</integer>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>4</id>
+							<bits>
+								<bitmask>255</bitmask>
+								<name>CH4 pulse duration</name>
+								<description>CH4 pulse duration</description>
+								<type>
+									<ui>text</ui>
+									<integer>
+										<min>0</min>
+										<max>255</max>
+									</integer>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>5</id>
+							<bits>
+								<bitmask>255</bitmask>
+								<name>CH5 pulse duration</name>
+								<description>CH5 pulse duration</description>
+								<type>
+									<ui>text</ui>
+									<integer>
+										<min>0</min>
+										<max>255</max>
+									</integer>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>6</id>
+							<bits>
+								<bitmask>255</bitmask>
+								<name>CH6 pulse duration</name>
+								<description>CH6 pulse duration</description>
+								<type>
+									<ui>text</ui>
+									<integer>
+										<min>0</min>
+										<max>255</max>
+									</integer>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>7</id>
+							<bits>
+								<bitmask>255</bitmask>
+								<name>CH7 pulse duration</name>
+								<description>CH7 pulse duration</description>
+								<type>
+									<ui>text</ui>
+									<integer>
+										<min>0</min>
+										<max>255</max>
+									</integer>
+								</type>
+							</bits>
+						</byte>
+						<byte>
+							<id>8</id>
+							<bits>
+								<bitmask>255</bitmask>
+								<name>CH8 pulse duration</name>
+								<description>CH8 pulse duration</description>
+								<type>
+									<ui>text</ui>
+									<integer>
+										<min>0</min>
+										<max>255</max>
+									</integer>
+								</type>
+							</bits>
+						</byte>
+					</bytes>
+				</group>
+				<group>
+					<name>Recharge timer</name>
+					<bytes>
+						<byte>
+							<id>9</id>
+							<bits>
+								<bitmask>255</bitmask>
+								<name>Recharge timer</name>
+								<description>Recharge timer units of 10ms</description>
+								<type>
+									<ui>text</ui>
+									<integer>
+										<min>0</min>
+										<max>255</max>
+									</integer>
+								</type>
+							</bits>
+						</byte>
+					</bytes>
+				</group>
+				<group>
+					<name>Fire delay</name>
+					<bytes>
+						<byte>
+							<id>10</id>
+							<bits>
+								<bitmask>255</bitmask>
+								<name>Fire delay</name>
+								<description>Delay between event and outut pulse</description>
+								<type>
+									<ui>text</ui>
+									<integer>
+										<min>0</min>
+										<max>255</max>
+									</integer>
+								</type>
+							</bits>
+						</byte>
+					</bytes>
+				</group>
+			</groups>
+		</nvtab>
+	</nvtabs>
+</moduletype>
