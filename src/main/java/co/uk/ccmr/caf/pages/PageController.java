@@ -158,8 +158,10 @@ public class PageController {
 	    		    				        response.flushBuffer();
 	    		    				    } catch (IOException ex) {
 	    		    				        // log error
+	    		    				    	is.close();
 	    		    				        throw new RuntimeException("IOError writing file to output stream", ex);
 	    		    				    }
+	    		    				    is.close();
 	    		    				    return;
 	    		    				}
 	    		    			}
@@ -173,8 +175,10 @@ public class PageController {
 	    		    	        response.flushBuffer();
 	    		    	    } catch (IOException ex) {
 	    		    	        // log error
+	    		    	    	is.close();
 	    		    	        throw new RuntimeException("IOError writing file to output stream", ex);
 	    		    	    }
+	    		    	    is.close();
 	    		    		return;
 	    		    		
 	    				}
@@ -193,8 +197,20 @@ public class PageController {
 	        response.flushBuffer();
 	    } catch (IOException ex) {
 	        // log error
+	    	try {
+				is.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 	        throw new RuntimeException("IOError writing file to output stream", ex);
+	        
 	    }
+	    try {
+			is.close();
+		} catch (IOException e) {
+			// swallow any errors
+			e.printStackTrace();
+		}
 	}
 	
 	/** module page requests we need to analyse the given parameters
